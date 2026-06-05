@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIMPAVIS</title>
-
 <style>
 *{
 margin:0;
@@ -12,44 +11,38 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
-
 body{
-background:#3f7397;
+background:#537b9f;
 color:white;
 }
-
 header{
-background:#1f4f69;
-padding:30px;
+background:#254d6b;
+padding:20px;
 text-align:center;
 }
-
 header h1{
-font-size:60px;
+font-size:48px;
 color:#d4af37;
-}
-
-header p{
-font-size:24px;
 font-weight:bold;
-margin-top:10px;
 }
-
+header p{
+font-size:22px;
+margin-top:10px;
+font-weight:bold;
+}
 .hero{
 padding:40px 20px;
 text-align:center;
 }
-
 .hero h2{
-font-size:55px;
+font-size:38px;
+line-height:1.2;
 margin-bottom:20px;
 }
-
 .hero p{
-font-size:22px;
-margin-bottom:25px;
+font-size:20px;
+margin-bottom:30px;
 }
-
 .trip-type{
 display:flex;
 justify-content:center;
@@ -59,12 +52,10 @@ flex-wrap:wrap;
 font-size:18px;
 font-weight:bold;
 }
-
 .search-box{
 max-width:800px;
 margin:auto;
 }
-
 .search-box input{
 width:100%;
 padding:18px;
@@ -73,7 +64,6 @@ border:none;
 border-radius:15px;
 font-size:20px;
 }
-
 .date-label{
 display:block;
 text-align:left;
@@ -82,7 +72,6 @@ font-weight:bold;
 margin-top:10px;
 margin-bottom:5px;
 }
-
 button{
 width:100%;
 padding:20px;
@@ -95,19 +84,20 @@ font-size:24px;
 font-weight:bold;
 cursor:pointer;
 }
-
+button:hover{
+opacity:0.9;
+}
 .results{
 display:none;
 max-width:800px;
 margin:40px auto;
+padding:0 20px;
 }
-
 .results h2{
 text-align:center;
+font-size:34px;
 margin-bottom:20px;
-font-size:36px;
 }
-
 .result-card{
 background:white;
 color:black;
@@ -115,36 +105,32 @@ padding:25px;
 border-radius:20px;
 margin-bottom:20px;
 }
-
 .result-card h3{
-color:#1f4f69;
-font-size:30px;
+color:#254d6b;
+font-size:28px;
+margin-bottom:10px;
 }
-
 .result-card strong{
 display:block;
 font-size:30px;
 color:#d4af37;
 margin:15px 0;
 }
-
 .result-card a{
 display:inline-block;
-background:#1f4f69;
+background:#254d6b;
 color:white;
 padding:12px 25px;
 border-radius:25px;
 text-decoration:none;
 font-weight:bold;
 }
-
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:40px 20px;
 }
-
 .card{
 background:white;
 color:black;
@@ -152,83 +138,64 @@ padding:25px;
 border-radius:20px;
 text-align:center;
 }
-
 .card h3{
-color:#1f4f69;
+color:#254d6b;
 margin-bottom:10px;
 }
-
 footer{
-background:#1f4f69;
+background:#254d6b;
 padding:20px;
 text-align:center;
 margin-top:40px;
+font-size:18px;
 }
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>SIMPAVIS</h1>
 <p>Find Your Best Price</p>
 </header>
-
 <section class="hero">
-
-<h2>Search Flights Worldwide</h2>
-
-<p>Compare airline prices and book directly with airlines.</p>
-
+<h2>Find Your Best Flight</h2>
+<p>
+Compare airline prices and book directly with airlines.
+</p>
 <div class="trip-type">
-
 <label>
 <input type="radio" name="trip" checked onclick="toggleReturn()">
 One Way
 </label>
-
 <label>
 <input type="radio" name="trip" onclick="toggleReturn()">
 Round Trip
 </label>
-
 <label>
 <input type="radio" name="trip" onclick="toggleReturn()">
 Multi City
 </label>
-
 </div>
-
 <div class="search-box">
-
 <input type="text" placeholder="From (Jeddah)">
-
 <input type="text" placeholder="To (Cairo)">
-
-<label class="date-label">Departure Date</label>
+<label class="date-label">
+Departure Date
+</label>
 <input type="date">
-
 <div id="returnBox">
-
-<label class="date-label">Return Date</label>
+<label class="date-label">
+Return Date
+</label>
 <input type="date">
-
 </div>
-
-<input type="number" placeholder="Travellers" value="1">
-
+<input type="number" value="1" placeholder="Travellers">
 <button onclick="showResults()">
 Search Flights
 </button>
-
 </div>
-
 </section>
-
 <div class="results" id="results">
-
 <h2>Available Flights</h2>
-
 <div class="result-card">
 <h3>Saudia</h3>
 <p>Jeddah → Cairo</p>
@@ -238,7 +205,6 @@ Search Flights
 Book Direct
 </a>
 </div>
-
 <div class="result-card">
 <h3>Flynas</h3>
 <p>Jeddah → Cairo</p>
@@ -248,7 +214,6 @@ Book Direct
 Book Direct
 </a>
 </div>
-
 <div class="result-card">
 <h3>EgyptAir</h3>
 <p>Jeddah → Cairo</p>
@@ -258,65 +223,47 @@ Book Direct
 Book Direct
 </a>
 </div>
-
 </div>
-
 <section class="services">
-
 <div class="card">
 <h3>✈ Flights</h3>
 <p>Compare airline ticket prices worldwide.</p>
 </div>
-
 <div class="card">
 <h3>🏨 Hotels</h3>
 <p>Find hotels at the best prices.</p>
 </div>
-
 <div class="card">
 <h3>🕋 Umrah</h3>
 <p>Book Umrah packages easily.</p>
 </div>
-
 <div class="card">
 <h3>🌍 Travel Assistance</h3>
 <p>Support in Arabic, French and English.</p>
 </div>
-
 </section>
-
 <footer>
 © 2026 SIMPAVIS
 </footer>
-
 <script>
-
 function showResults(){
 document.getElementById("results").style.display="block";
 document.getElementById("results").scrollIntoView({
 behavior:"smooth"
 });
 }
-
 function toggleReturn(){
-
-const selected =
+const selected=
 document.querySelector('input[name="trip"]:checked');
-
-const returnBox =
+const returnBox=
 document.getElementById("returnBox");
-
 if(selected.parentElement.innerText.includes("One Way")){
 returnBox.style.display="none";
 }else{
 returnBox.style.display="block";
 }
-
 }
-
 toggleReturn();
-
 </script>
-
 </body>
 </html>
