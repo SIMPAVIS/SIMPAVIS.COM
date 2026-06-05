@@ -425,3 +425,44 @@ updateTravellers();
 
 </body>
 </html>
+<header>
+<h1>SIMPAVIS</h1>
+<p>Find Your Best Price</p>
+</header>
+
+<section class="hero">
+
+<div class="trip-type">
+<label><input type="radio" name="trip" checked onclick="toggleReturn()"> One Way</label>
+<label><input type="radio" name="trip" onclick="toggleReturn()"> Round Trip</label>
+<label><input type="radio" name="trip" onclick="toggleReturn()"> Multi City</label>
+</div>
+
+<div class="search-box">
+
+<input type="text" placeholder="From">
+
+<input type="text" placeholder="To">
+
+<label class="date-label">Departure Date</label>
+<input type="date">
+
+<div class="travellers-box" onclick="toggleTravellers()">
+<span id="travellerSummary">1 Adult ▼</span>
+</div>
+
+<div class="travellers-menu" id="travellersMenu">
+<label>Adults</label>
+<input type="number" id="adults" value="1" min="1" onchange="updateTravellers()">
+
+<label>Children 2-18</label>
+<input type="number" id="children" value="0" min="0" onchange="updateTravellers()">
+
+<label>Infants 0-2</label>
+<input type="number" id="infants" value="0" min="0" onchange="updateTravellers()">
+</div>
+
+<button onclick="showResults()">Search Flights</button>
+
+</div>
+</section>
