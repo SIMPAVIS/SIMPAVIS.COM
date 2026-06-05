@@ -4,29 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIMPAVIS</title>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
 body{background:#537b9f;color:white}
+
 header{background:#254d6b;padding:25px;text-align:center}
 header h1{font-size:48px;color:#d4af37}
 header p{font-size:22px;font-weight:bold;margin-top:8px}
+
 .hero{padding:35px 20px;text-align:center}
-.trip-type{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:18px;font-weight:bold;margin:25px 0}
+
+.trip-type{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+margin:25px 0;
+font-size:18px;
+font-weight:bold;
+flex-wrap:nowrap;
+}
+
+.trip-type label{
+display:flex;
+align-items:center;
+gap:6px;
+cursor:pointer;
+white-space:nowrap;
+}
+
+.trip-type input{
+width:auto;
+margin:0;
+}
+
 .search-box{max-width:800px;margin:auto}
-input{width:100%;padding:18px;margin:10px 0;border:0;border-radius:15px;font-size:20px}
-label.date-label{display:block;text-align:left;font-weight:bold;margin-top:10px}
-.travellers-box{background:white;color:black;padding:18px;border-radius:15px;font-size:20px;text-align:left;margin:10px 0;cursor:pointer}
-.travellers-menu{display:none;background:white;color:black;padding:18px;border-radius:15px;text-align:left}
-.travellers-menu label{display:block;font-weight:bold;margin-top:10px}
-button{width:100%;padding:20px;margin-top:15px;border:0;border-radius:50px;background:#d4af37;color:black;font-size:24px;font-weight:bold}
-.results{display:none;max-width:800px;margin:35px auto;padding:0 20px}
-.result-card{background:white;color:black;padding:25px;border-radius:20px;margin-bottom:20px}
+
+input{
+width:100%;
+padding:18px;
+margin:10px 0;
+border:0;
+border-radius:15px;
+font-size:20px;
+}
+
+label.date-label{
+display:block;
+text-align:left;
+font-weight:bold;
+margin-top:10px;
+}
+
+.travellers-box{
+background:white;
+color:black;
+padding:18px;
+border-radius:15px;
+font-size:20px;
+text-align:left;
+margin:10px 0;
+cursor:pointer;
+}
+
+.travellers-menu{
+display:none;
+background:white;
+color:black;
+padding:18px;
+border-radius:15px;
+text-align:left;
+}
+
+.travellers-menu label{
+display:block;
+font-weight:bold;
+margin-top:10px;
+}
+
+button{
+width:100%;
+padding:20px;
+margin-top:15px;
+border:0;
+border-radius:50px;
+background:#d4af37;
+color:black;
+font-size:24px;
+font-weight:bold;
+}
+
+.results{
+display:none;
+max-width:800px;
+margin:35px auto;
+padding:0 20px;
+}
+
+.result-card{
+background:white;
+color:black;
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
 .result-card h3{color:#254d6b}
-.result-card strong{display:block;color:#d4af37;font-size:30px;margin:12px 0}
-.result-card a{display:inline-block;background:#254d6b;color:white;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:bold}
-footer{background:#254d6b;text-align:center;padding:20px;margin-top:40px}
+
+.result-card strong{
+display:block;
+color:#d4af37;
+font-size:30px;
+margin:12px 0;
+}
+
+.result-card a{
+display:inline-block;
+background:#254d6b;
+color:white;
+padding:12px 25px;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer{
+background:#254d6b;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -35,6 +147,7 @@ footer{background:#254d6b;text-align:center;padding:20px;margin-top:40px}
 </header>
 
 <section class="hero">
+
 <div class="trip-type">
 <label><input type="radio" name="trip" checked onclick="toggleReturn()"> One Way</label>
 <label><input type="radio" name="trip" onclick="toggleReturn()"> Round Trip</label>
@@ -42,6 +155,7 @@ footer{background:#254d6b;text-align:center;padding:20px;margin-top:40px}
 </div>
 
 <div class="search-box">
+
 <input type="text" placeholder="From">
 <input type="text" placeholder="To">
 
@@ -69,6 +183,7 @@ footer{background:#254d6b;text-align:center;padding:20px;margin-top:40px}
 </div>
 
 <button onclick="showResults()">Search Flights</button>
+
 </div>
 </section>
 
@@ -108,57 +223,33 @@ function showResults(){
 document.getElementById("results").style.display="block";
 document.getElementById("results").scrollIntoView({behavior:"smooth"});
 }
+
 function toggleReturn(){
 const selected=document.querySelector('input[name="trip"]:checked');
 document.getElementById("returnBox").style.display =
 selected.parentElement.innerText.includes("One Way") ? "none" : "block";
 }
+
 function toggleTravellers(){
 const menu=document.getElementById("travellersMenu");
 menu.style.display = menu.style.display==="block" ? "none" : "block";
 }
+
 function updateTravellers(){
 const adults=parseInt(document.getElementById("adults").value)||0;
 const children=parseInt(document.getElementById("children").value)||0;
 const infants=parseInt(document.getElementById("infants").value)||0;
+
 let text=adults+" Adult";
 if(children>0) text+=", "+children+" Child";
 if(infants>0) text+=", "+infants+" Infant";
+
 document.getElementById("travellerSummary").innerText=text+" ▼";
 }
+
 toggleReturn();
 updateTravellers();
 </script>
 
 </body>
 </html>
-.trip-type{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:30px;
-margin:20px 0 30px;
-font-size:17px;
-font-weight:600;
-}.trip-type{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:25px;
-margin:25px 0;
-font-size:18px;
-font-weight:bold;
-flex-wrap:nowrap;
-}
-
-.trip-type label{
-display:flex;
-align-items:center;
-gap:6px;
-cursor:pointer;
-}
-
-.trip-type input{
-width:auto;
-margin:0;
-}
