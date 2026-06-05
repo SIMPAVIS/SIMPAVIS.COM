@@ -31,8 +31,8 @@ color:#d4af37;
 
 header p{
 font-size:24px;
-margin-top:10px;
 font-weight:bold;
+margin-top:10px;
 }
 
 .hero{
@@ -81,7 +81,6 @@ font-size:18px;
 font-weight:bold;
 margin-top:10px;
 margin-bottom:5px;
-color:white;
 }
 
 button{
@@ -106,33 +105,35 @@ margin:40px auto;
 .results h2{
 text-align:center;
 margin-bottom:20px;
+font-size:36px;
 }
 
 .result-card{
 background:white;
 color:black;
-padding:20px;
+padding:25px;
 border-radius:20px;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
 .result-card h3{
 color:#1f4f69;
+font-size:30px;
 }
 
 .result-card strong{
 display:block;
-margin:10px 0;
-font-size:24px;
+font-size:30px;
 color:#d4af37;
+margin:15px 0;
 }
 
 .result-card a{
 display:inline-block;
 background:#1f4f69;
 color:white;
-padding:10px 20px;
-border-radius:20px;
+padding:12px 25px;
+border-radius:25px;
 text-decoration:none;
 font-weight:bold;
 }
@@ -147,7 +148,7 @@ padding:40px 20px;
 .card{
 background:white;
 color:black;
-padding:20px;
+padding:25px;
 border-radius:20px;
 text-align:center;
 }
@@ -180,9 +181,22 @@ margin-top:40px;
 <p>Compare airline prices and book directly with airlines.</p>
 
 <div class="trip-type">
-<label><input type="radio" name="trip" checked> One Way</label>
-<label><input type="radio" name="trip"> Round Trip</label>
-<label><input type="radio" name="trip"> Multi City</label>
+
+<label>
+<input type="radio" name="trip" checked onclick="toggleReturn()">
+One Way
+</label>
+
+<label>
+<input type="radio" name="trip" onclick="toggleReturn()">
+Round Trip
+</label>
+
+<label>
+<input type="radio" name="trip" onclick="toggleReturn()">
+Multi City
+</label>
+
 </div>
 
 <div class="search-box">
@@ -194,12 +208,18 @@ margin-top:40px;
 <label class="date-label">Departure Date</label>
 <input type="date">
 
+<div id="returnBox">
+
 <label class="date-label">Return Date</label>
 <input type="date">
 
-<input type="number" placeholder="Passengers" value="1">
+</div>
 
-<button onclick="showResults()">Search Flights</button>
+<input type="number" placeholder="Travellers" value="1">
+
+<button onclick="showResults()">
+Search Flights
+</button>
 
 </div>
 
@@ -214,7 +234,9 @@ margin-top:40px;
 <p>Jeddah → Cairo</p>
 <p>Departure: 13 Jun 2026</p>
 <strong>$220</strong>
-<a href="https://www.saudia.com" target="_blank">Book Direct</a>
+<a href="https://www.saudia.com" target="_blank">
+Book Direct
+</a>
 </div>
 
 <div class="result-card">
@@ -222,7 +244,9 @@ margin-top:40px;
 <p>Jeddah → Cairo</p>
 <p>Departure: 13 Jun 2026</p>
 <strong>$235</strong>
-<a href="https://www.flynas.com" target="_blank">Book Direct</a>
+<a href="https://www.flynas.com" target="_blank">
+Book Direct
+</a>
 </div>
 
 <div class="result-card">
@@ -230,7 +254,9 @@ margin-top:40px;
 <p>Jeddah → Cairo</p>
 <p>Departure: 13 Jun 2026</p>
 <strong>$240</strong>
-<a href="https://www.egyptair.com" target="_blank">Book Direct</a>
+<a href="https://www.egyptair.com" target="_blank">
+Book Direct
+</a>
 </div>
 
 </div>
@@ -244,17 +270,17 @@ margin-top:40px;
 
 <div class="card">
 <h3>🏨 Hotels</h3>
-<p>Find hotels that fit your budget.</p>
+<p>Find hotels at the best prices.</p>
 </div>
 
 <div class="card">
 <h3>🕋 Umrah</h3>
-<p>Book Umrah packages and travel services.</p>
+<p>Book Umrah packages easily.</p>
 </div>
 
 <div class="card">
 <h3>🌍 Travel Assistance</h3>
-<p>Travel support in Arabic, French and English.</p>
+<p>Support in Arabic, French and English.</p>
 </div>
 
 </section>
@@ -264,12 +290,32 @@ margin-top:40px;
 </footer>
 
 <script>
+
 function showResults(){
 document.getElementById("results").style.display="block";
 document.getElementById("results").scrollIntoView({
 behavior:"smooth"
 });
 }
+
+function toggleReturn(){
+
+const selected =
+document.querySelector('input[name="trip"]:checked');
+
+const returnBox =
+document.getElementById("returnBox");
+
+if(selected.parentElement.innerText.includes("One Way")){
+returnBox.style.display="none";
+}else{
+returnBox.style.display="block";
+}
+
+}
+
+toggleReturn();
+
 </script>
 
 </body>
