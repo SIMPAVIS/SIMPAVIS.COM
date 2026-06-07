@@ -7,28 +7,162 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
 body{background:#eef5f9;color:#123;padding-bottom:80px}
-header{background:#254d6b;color:white;text-align:center;padding:25px}
-header h1{color:#d4af37;font-size:46px}
-header p{font-size:20px;font-weight:bold;margin-top:8px}
-.container{max-width:850px;margin:25px auto;padding:20px}
-.card{background:white;border-radius:24px;padding:22px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
-.trip-type{display:flex;justify-content:center;gap:14px;white-space:nowrap;font-weight:bold;margin-bottom:20px}
-.trip-type input{width:18px;height:18px;margin-right:5px}
-input,select{width:100%;padding:16px;margin:8px 0;border:1px solid #ddd;border-radius:14px;font-size:18px;background:white}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{font-weight:bold;color:#254d6b}
-.travellers-box{padding:16px;margin:8px 0;border:1px solid #ddd;border-radius:14px;font-size:18px;background:white;cursor:pointer}
-.travellers-menu{display:none;background:#f7f7f7;border-radius:14px;padding:15px;margin-top:8px}
-button{width:100%;padding:18px;background:#d4af37;color:black;border:0;border-radius:40px;font-size:22px;font-weight:bold;margin-top:16px}
-.results{display:none;margin-top:25px}
-.result-card{background:white;border-radius:20px;padding:20px;margin-bottom:15px;box-shadow:0 5px 18px rgba(0,0,0,.1)}
-.result-card h3{color:#254d6b}
-.result-card a{display:inline-block;margin-top:12px;background:#254d6b;color:white;padding:10px 20px;border-radius:25px;text-decoration:none}
-.trust{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-.trust div{background:#254d6b;color:white;padding:14px;border-radius:14px;text-align:center}
-footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
-@media(max-width:600px){.row{grid-template-columns:1fr}.trip-type{font-size:14px;gap:8px}header h1{font-size:38px}}
+
+header{
+background:#254d6b;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+header h1{
+color:#d4af37;
+font-size:46px;
+}
+
+header p{
+font-size:20px;
+font-weight:bold;
+margin-top:8px;
+}
+
+.container{
+max-width:850px;
+margin:25px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:24px;
+padding:22px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.trip-type{
+display:flex;
+justify-content:center;
+gap:14px;
+white-space:nowrap;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.trip-type input{
+width:18px;
+height:18px;
+margin-right:5px;
+}
+
+input,select{
+width:100%;
+padding:16px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:14px;
+font-size:18px;
+background:white;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+label{
+font-weight:bold;
+color:#254d6b;
+display:block;
+margin-top:12px;
+}
+
+.travellers-box{
+padding:16px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:14px;
+font-size:18px;
+background:white;
+cursor:pointer;
+}
+
+.travellers-menu{
+display:none;
+background:#f7f7f7;
+border-radius:14px;
+padding:15px;
+margin-top:8px;
+}
+
+button{
+width:100%;
+padding:18px;
+background:#d4af37;
+color:black;
+border:0;
+border-radius:40px;
+font-size:22px;
+font-weight:bold;
+margin-top:16px;
+}
+
+.results{
+display:none;
+margin-top:25px;
+}
+
+.result-card{
+background:white;
+border-radius:20px;
+padding:20px;
+margin-bottom:15px;
+box-shadow:0 5px 18px rgba(0,0,0,.1);
+}
+
+.result-card h3{
+color:#254d6b;
+}
+
+.result-card a{
+display:inline-block;
+margin-top:12px;
+background:#254d6b;
+color:white;
+padding:10px 20px;
+border-radius:25px;
+text-decoration:none;
+}
+
+.trust{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:20px;
+}
+
+.trust div{
+background:#254d6b;
+color:white;
+padding:14px;
+border-radius:14px;
+text-align:center;
+}
+
+footer{
+text-align:center;
+margin:30px 0;
+color:#254d6b;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+.row{grid-template-columns:1fr}
+.trip-type{font-size:14px;gap:8px}
+header h1{font-size:38px}
+}
 </style>
 </head>
 
@@ -40,6 +174,7 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 </header>
 
 <div class="container">
+
 <div class="card">
 
 <div class="trip-type">
@@ -49,26 +184,19 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 </div>
 
 <div id="normalSearch">
+
 <div class="row">
 <div>
 <label>From</label>
-<select>
-<option>DSS - Dakar</option>
-<option>JED - Jeddah</option>
-<option>DXB - Dubai</option>
-<option>CDG - Paris</option>
-<option>IST - Istanbul</option>
+<select id="fromAirport">
+<option value="" selected disabled>Choose departure airport</option>
 </select>
 </div>
 
 <div>
 <label>To</label>
-<select>
-<option>JED - Jeddah</option>
-<option>CDG - Paris</option>
-<option>DXB - Dubai</option>
-<option>IST - Istanbul</option>
-<option>DSS - Dakar</option>
+<select id="toAirport">
+<option value="" selected disabled>Choose destination airport</option>
 </select>
 </div>
 </div>
@@ -80,19 +208,26 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 <label>Return Date</label>
 <input type="date">
 </div>
+
 </div>
 
 <div id="multiCityBox" style="display:none">
 <label>Flight 1 From</label>
 <input type="text" placeholder="From">
+
 <label>Flight 1 To</label>
 <input type="text" placeholder="To">
+
+<label>Flight 1 Date</label>
 <input type="date">
 
 <label>Flight 2 From</label>
 <input type="text" placeholder="From">
+
 <label>Flight 2 To</label>
 <input type="text" placeholder="To">
+
+<label>Flight 2 Date</label>
 <input type="date">
 </div>
 
@@ -104,8 +239,10 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 <div class="travellers-menu" id="travellersMenu">
 <label>Adults</label>
 <input type="number" id="adults" value="1" min="1" onchange="updateTravellers()">
+
 <label>Children 2-18</label>
 <input type="number" id="children" value="0" min="0" onchange="updateTravellers()">
+
 <label>Infants 0-2</label>
 <input type="number" id="infants" value="0" min="0" onchange="updateTravellers()">
 </div>
@@ -118,34 +255,57 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 <option>First Class</option>
 </select>
 
+<div class="row">
+<div>
+<label>Language</label>
+<select>
+<option>English</option>
+<option>Français</option>
+<option>العربية</option>
+</select>
+</div>
+
+<div>
+<label>Currency</label>
+<select>
+<option>USD</option>
+<option>EUR</option>
+<option>SAR</option>
+<option>XOF</option>
+</select>
+</div>
+</div>
+
 <button onclick="showResults()">Search Flights</button>
 
 </div>
 
 <div class="results" id="results">
+
 <div class="result-card">
 <h3>Saudia</h3>
-<p>Dakar → Jeddah</p>
+<p>Book directly with Saudia.</p>
 <a href="https://www.saudia.com" target="_blank">Book Direct</a>
 </div>
 
 <div class="result-card">
 <h3>Emirates</h3>
-<p>Dakar → Dubai</p>
+<p>Book directly with Emirates.</p>
 <a href="https://www.emirates.com" target="_blank">Book Direct</a>
 </div>
 
 <div class="result-card">
 <h3>Air France</h3>
-<p>Dakar → Paris</p>
+<p>Book directly with Air France.</p>
 <a href="https://www.airfrance.com" target="_blank">Book Direct</a>
 </div>
 
 <div class="result-card">
 <h3>Ethiopian Airlines</h3>
-<p>Dakar → Addis Ababa</p>
+<p>Book directly with Ethiopian Airlines.</p>
 <a href="https://www.ethiopianairlines.com" target="_blank">Book Direct</a>
 </div>
+
 </div>
 
 <div class="trust">
@@ -157,7 +317,7 @@ footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
 
 </div>
 
-<footer>© SIMPAVIS • Dakar, Senegal</footer>
+<footer>© SIMPAVIS SARL</footer>
 
 <script>
 function showResults(){
@@ -174,17 +334,25 @@ function updateTravellers(){
 const adults=parseInt(document.getElementById("adults").value)||0;
 const children=parseInt(document.getElementById("children").value)||0;
 const infants=parseInt(document.getElementById("infants").value)||0;
+
 let text=adults+" Adult";
 if(children>0) text+=", "+children+" Child";
 if(infants>0) text+=", "+infants+" Infant";
+
 document.getElementById("travellerSummary").innerText=text+" ▼";
 }
 
 function toggleTrip(){
 const selected=document.querySelector('input[name="trip"]:checked').parentElement.innerText;
-document.getElementById("returnBox").style.display=selected.includes("Round")?"block":"none";
-document.getElementById("multiCityBox").style.display=selected.includes("Multi")?"block":"none";
-document.getElementById("normalSearch").style.display=selected.includes("Multi")?"none":"block";
+
+document.getElementById("returnBox").style.display=
+selected.includes("Round")?"block":"none";
+
+document.getElementById("multiCityBox").style.display=
+selected.includes("Multi")?"block":"none";
+
+document.getElementById("normalSearch").style.display=
+selected.includes("Multi")?"none":"block";
 }
 
 toggleTrip();
@@ -193,135 +361,3 @@ updateTravellers();
 
 </body>
 </html>
-<label>From</label>
-<select>
-<option value="" selected>Select departure airport</option>
-<option>DSS - Dakar</option>
-<option>JED - Jeddah</option>
-<option>RUH - Riyadh</option>
-<option>DXB - Dubai</option>
-<option>CDG - Paris</option>
-<option>IST - Istanbul</option>
-<option>CAI - Cairo</option>
-<option>ADD - Addis Ababa</option>
-</select>
-
-<label>To</label>
-<select>
-<option value="" selected>Select destination airport</option>
-<option>JED - Jeddah</option>
-<option>CDG - Paris</option>
-<option>DXB - Dubai</option>
-<option>IST - Istanbul</option>
-<option>CAI - Cairo</option>
-<option>ADD - Addis Ababa</option>
-<option>DSS - Dakar</option>
-</select>
-``
-<label>From</label>
-<select>
-<option value="" selected disabled>Choose departure airport</option>
-<option>DSS - Dakar</option>
-<option>JED - Jeddah</option>
-<option>RUH - Riyadh</option>
-<option>DXB - Dubai</option>
-<option>CDG - Paris</option>
-<option>IST - Istanbul</option>
-<option>CAI - Cairo</option>
-<option>ADD - Addis Ababa</option>
-</select>
-
-<label>To</label>
-<select>
-<option value="" selected disabled>Choose destination airport</option>
-<option>JED - Jeddah</option>
-<option>CDG - Paris</option>
-<option>DXB - Dubai</option>
-<option>IST - Istanbul</option>
-<option>CAI - Cairo</option>
-<option>ADD - Addis Ababa</option>
-<option>DSS - Dakar</option>
-</select>
-<select id="fromAirport">
-<option value="" selected disabled>Select airport</option>
-</select>
-
-<select id="toAirport">
-<option value="" selected disabled>Select airport</option>
-</select>
-<label>From</label>
-<select>
-    <option value="" selected disabled>
-        Choose departure airport
-    </option>
-</select>
-
-<label>To</label>
-<select>
-    <option value="" selected disabled>
-        Choose destination airport
-    </option>
-</select>
-<div class="row">
-  <div>
-    <label>From</label>
-    <select id="fromAirport">
-      <option value="" selected disabled>
-        Choose departure airport
-      </option>
-    </select>
-  </div>
-
-  <div>
-    <label>To</label>
-    <select id="toAirport">
-      <option value="" selected disabled>
-        Choose destination airport
-      </option>
-    </select>
-  </div>
-</div>
-
-<label>Departure Date</label>
-<input type="date">
-
-<label>Travellers</label>
-<select>
-  <option>1 Adult</option>
-  <option>2 Adults</option>
-  <option>3 Adults</option>
-  <option>4 Adults</option>
-</select>
-
-<label>Cabin Class</label>
-<select>
-  <option>Economy</option>
-  <option>Premium Economy</option>
-  <option>Business</option>
-  <option>First Class</option>
-</select>
-
-<div class="row">
-  <div>
-    <label>Language</label>
-    <select>
-      <option>English</option>
-      <option>Français</option>
-      <option>العربية</option>
-    </select>
-  </div>
-
-  <div>
-    <label>Currency</label>
-    <select>
-      <option>USD</option>
-      <option>EUR</option>
-      <option>SAR</option>
-      <option>XOF</option>
-    </select>
-  </div>
-</div>
-
-<button type="button">
-  Search Flights
-</button>
