@@ -330,3 +330,257 @@ Dakar, Senegal
 </body>
 </html>
 ``
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMPAVIS</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#eef5f9;color:#123;padding-bottom:80px}
+header{background:#254d6b;color:white;text-align:center;padding:25px}
+header h1{color:#d4af37;font-size:46px}
+header p{font-size:20px;font-weight:bold;margin-top:8px}
+.container{max-width:900px;margin:25px auto;padding:20px}
+.card{background:white;border-radius:24px;padding:22px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.trip-type{display:flex;justify-content:center;gap:18px;white-space:nowrap;font-weight:bold;margin-bottom:20px}
+.trip-type input{width:auto;margin-right:5px}
+input,select{width:100%;padding:16px;margin:8px 0;border:1px solid #ddd;border-radius:14px;font-size:18px;background:white}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-weight:bold;color:#254d6b}
+.travellers-box{padding:16px;margin:8px 0;border:1px solid #ddd;border-radius:14px;font-size:18px;background:white;cursor:pointer}
+.travellers-menu{display:none;background:#f7f7f7;border-radius:14px;padding:15px;margin-top:8px}
+button{width:100%;padding:18px;background:#d4af37;color:black;border:0;border-radius:40px;font-size:22px;font-weight:bold;margin-top:16px}
+.results{display:none;margin-top:25px}
+.result-card{background:white;border-radius:20px;padding:20px;margin-bottom:15px;box-shadow:0 5px 18px rgba(0,0,0,.1)}
+.result-card h3{color:#254d6b}
+.result-card strong{color:#d4af37;font-size:26px}
+.result-card a{display:inline-block;margin-top:12px;background:#254d6b;color:white;padding:10px 20px;border-radius:25px;text-decoration:none}
+.popular{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:20px}
+.popular div{background:white;padding:16px;border-radius:16px;text-align:center;font-weight:bold;color:#254d6b}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:20px}
+.trust div{background:#254d6b;color:white;padding:14px;border-radius:14px;text-align:center}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 5px;box-shadow:0 -4px 15px rgba(0,0,0,.15)}
+.bottom-nav a{text-decoration:none;color:#254d6b;font-weight:bold;font-size:14px;text-align:center}
+footer{text-align:center;margin:30px 0;color:#254d6b;font-weight:bold}
+@media(max-width:600px){.row{grid-template-columns:1fr}.trip-type{font-size:14px;gap:10px}header h1{font-size:38px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>SIMPAVIS</h1>
+<p>Find Your Best Price</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div class="trip-type">
+<label><input type="radio" name="trip" checked onclick="toggleTrip()">One Way</label>
+<label><input type="radio" name="trip" onclick="toggleTrip()">Round Trip</label>
+<label><input type="radio" name="trip" onclick="toggleTrip()">Multi City</label>
+</div>
+
+<div id="normalSearch">
+
+<div class="row">
+<div>
+<label>From</label>
+<select>
+<option>DSS - Dakar</option>
+<option>JED - Jeddah</option>
+<option>RUH - Riyadh</option>
+<option>DXB - Dubai</option>
+<option>CDG - Paris</option>
+<option>IST - Istanbul</option>
+<option>CAI - Cairo</option>
+<option>ADD - Addis Ababa</option>
+</select>
+</div>
+
+<div>
+<label>To</label>
+<select>
+<option>CDG - Paris</option>
+<option>JED - Jeddah</option>
+<option>DXB - Dubai</option>
+<option>IST - Istanbul</option>
+<option>CAI - Cairo</option>
+<option>ADD - Addis Ababa</option>
+<option>DSS - Dakar</option>
+</select>
+</div>
+</div>
+
+<label>Departure Date</label>
+<input type="date">
+
+<div id="returnBox">
+<label>Return Date</label>
+<input type="date">
+</div>
+
+</div>
+
+<div id="multiCityBox" style="display:none">
+<h3 style="color:#254d6b;margin-bottom:10px">Multi City</h3>
+<input type="text" placeholder="Flight 1: From">
+<input type="text" placeholder="Flight 1: To">
+<input type="date">
+<input type="text" placeholder="Flight 2: From">
+<input type="text" placeholder="Flight 2: To">
+<input type="date">
+</div>
+
+<label>Travellers</label>
+<div class="travellers-box" onclick="toggleTravellers()">
+<span id="travellerSummary">1 Adult ▼</span>
+</div>
+
+<div class="travellers-menu" id="travellersMenu">
+<label>Adults</label>
+<input type="number" id="adults" value="1" min="1" onchange="updateTravellers()">
+
+<label>Children 2-18</label>
+<input type="number" id="children" value="0" min="0" onchange="updateTravellers()">
+
+<label>Infants 0-2</label>
+<input type="number" id="infants" value="0" min="0" onchange="updateTravellers()">
+</div>
+
+<label>Cabin Class</label>
+<select>
+<option>Economy</option>
+<option>Premium Economy</option>
+<option>Business</option>
+<option>First Class</option>
+</select>
+
+<div class="row">
+<div>
+<label>Language</label>
+<select>
+<option>English</option>
+<option>Français</option>
+<option>العربية</option>
+</select>
+</div>
+
+<div>
+<label>Currency</label>
+<select>
+<option>EUR</option>
+<option>USD</option>
+<option>XOF</option>
+<option>SAR</option>
+</select>
+</div>
+</div>
+
+<button onclick="showResults()">Search Flights</button>
+
+</div>
+
+<div class="results" id="results">
+
+<div class="result-card">
+<h3>Saudia</h3>
+<p>Dakar → Jeddah</p>
+<p>Economy: <strong>$420</strong></p>
+<p>Business: <strong>$890</strong></p>
+<a href="https://www.saudia.com" target="_blank">Book Direct</a>
+</div>
+
+<div class="result-card">
+<h3>Emirates</h3>
+<p>Dakar → Dubai</p>
+<p>Economy: <strong>$510</strong></p>
+<p>Business: <strong>$1,200</strong></p>
+<a href="https://www.emirates.com" target="_blank">Book Direct</a>
+</div>
+
+<div class="result-card">
+<h3>Air France</h3>
+<p>Dakar → Paris</p>
+<p>Economy: <strong>$390</strong></p>
+<p>Business: <strong>$980</strong></p>
+<a href="https://www.airfrance.com" target="_blank">Book Direct</a>
+</div>
+
+<div class="result-card">
+<h3>Ethiopian Airlines</h3>
+<p>Dakar → Addis Ababa</p>
+<p>Economy: <strong>$460</strong></p>
+<p>Business: <strong>$950</strong></p>
+<a href="https://www.ethiopianairlines.com" target="_blank">Book Direct</a>
+</div>
+
+</div>
+
+<h2 style="margin-top:30px;color:#254d6b">Popular Destinations</h2>
+<div class="popular">
+<div>Dakar → Paris</div>
+<div>Dakar → Jeddah</div>
+<div>Dakar → Dubai</div>
+<div>Dakar → Istanbul</div>
+<div>Dakar → Cairo</div>
+</div>
+
+<div class="trust">
+<div>✓ Best Price Search</div>
+<div>✓ Trusted Airlines</div>
+<div>✓ Secure Booking</div>
+<div>✓ Travel Assistance</div>
+</div>
+
+</div>
+
+<footer>© 2026 SIMPAVIS SARL</footer>
+
+<div class="bottom-nav">
+<a href="#">Home</a>
+<a href="#">Flights</a>
+<a href="#">Hotels</a>
+<a href="#">Visa</a>
+<a href="#">Contact</a>
+</div>
+
+<script>
+function showResults(){
+document.getElementById("results").style.display="block";
+document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
+
+function toggleTravellers(){
+const menu=document.getElementById("travellersMenu");
+menu.style.display=menu.style.display==="block"?"none":"block";
+}
+
+function updateTravellers(){
+const adults=parseInt(document.getElementById("adults").value)||0;
+const children=parseInt(document.getElementById("children").value)||0;
+const infants=parseInt(document.getElementById("infants").value)||0;
+let text=adults+" Adult";
+if(children>0) text+=", "+children+" Child";
+if(infants>0) text+=", "+infants+" Infant";
+document.getElementById("travellerSummary").innerText=text+" ▼";
+}
+
+function toggleTrip(){
+const selected=document.querySelector('input[name="trip"]:checked').parentElement.innerText;
+document.getElementById("returnBox").style.display=selected.includes("Round")?"block":"none";
+document.getElementById("multiCityBox").style.display=selected.includes("Multi")?"block":"none";
+document.getElementById("normalSearch").style.display=selected.includes("Multi")?"none":"block";
+}
+
+toggleTrip();
+updateTravellers();
+</script>
+
+</body>
+</html>
